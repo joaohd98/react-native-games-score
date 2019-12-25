@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {Text, View} from "react-native";
 
-export class ConfigPage extends Component {
+export class MenuPage extends Component {
 
   render = () => {
 

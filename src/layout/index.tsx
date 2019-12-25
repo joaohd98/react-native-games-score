@@ -1,17 +1,18 @@
 import React from 'react';
-import { View} from 'react-native';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
-import {AllGamesPage} from '../pages/all-games';
-import {BestGamesPage} from '../pages/best-games';
-import {ConfigPage} from '../pages/config';
+import {MenuPage} from '../pages/menu';
 import {createAppContainer} from 'react-navigation';
+import {GamesPage} from '../pages/games';
+import {GenresPage} from '../pages/genres';
+import {PublishersPage} from '../pages/publishers';
 
 const App = () => {
 
   const TabNavigator = createBottomTabNavigator({
-    AllGames: AllGamesPage,
-    BestGames: BestGamesPage,
-    Config: ConfigPage,
+    Games: GamesPage,
+    Genres: GenresPage,
+    Publishers: PublishersPage,
+    Menu: MenuPage,
   });
 
   return createAppContainer(TabNavigator);
