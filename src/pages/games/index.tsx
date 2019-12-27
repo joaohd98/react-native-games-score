@@ -7,7 +7,7 @@ export class GamesPage extends Component {
 
     return (
       <View>
-        <Text>GamesPage</Text>
+        <Text>ssss</Text>
       </View>
     )
 
