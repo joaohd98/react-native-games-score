@@ -7,6 +7,8 @@ import {GamesTab} from './tab/games';
 import {GenresTab} from './tab/genres';
 import {MenuTab} from './tab/menu';
 import {PublisherTab} from './tab/publishers';
+import {Provider} from 'react-redux'
+import {store} from '../redux/store';
 
 const getBottomTabNavigation = () => {
 
@@ -16,8 +18,8 @@ const getBottomTabNavigation = () => {
     publishers: PublisherTab,
     menu: MenuTab,
   });
-};
 
+};
 
 const Layout = () => {
 
@@ -25,7 +27,11 @@ const Layout = () => {
 
   const AppContainer = createAppContainer(tabNavigation);
 
-  return <AppContainer/>
+  return (
+    <Provider store={store}>
+      <AppContainer/>
+    </Provider>
+  );
 
 };
 
