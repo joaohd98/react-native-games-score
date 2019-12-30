@@ -27,7 +27,7 @@ export const CreateStackNavigator = (pages: Function[]) => {
         alignSelf: "center"
       },
       headerRightContainerStyle: {
-        right: 20
+        right: 15
       }
     }
   });
