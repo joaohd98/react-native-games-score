@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import {FlatList, Text} from 'react-native';
+import {GamesHeaderComponent} from '../header';
 
 export class GamesListComponent extends Component {
+
+  static navigationOptions = GamesHeaderComponent;
 
   render = () => {
 
