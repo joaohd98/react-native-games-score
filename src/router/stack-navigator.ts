@@ -8,6 +8,7 @@ export const CreateStackNavigator = (pages: Function[]) => {
   pages.forEach(page => routes[page.name] = page);
 
   return createStackNavigator(routes, {
+    headerLayoutPreset: "center",
     defaultNavigationOptions:  {
       headerStyle: {
         elevation: 0,
