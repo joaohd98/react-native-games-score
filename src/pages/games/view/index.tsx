@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {GamesListComponent} from './components/list';
-import {View} from 'react-native';
 import {GamesHeaderComponent} from './components/header';
+import {Container} from '../../../theme/components';
 
 export class GamesPage extends Component {
 
@@ -10,9 +10,9 @@ export class GamesPage extends Component {
   render() {
 
     return (
-      <View>
+      <Container>
         <GamesListComponent/>
-      </View>
+      </Container>
     )
 
   }
