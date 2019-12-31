@@ -16,6 +16,10 @@ export const CreateStackNavigator = (pages: Function[]) => {
         borderBottomColor: Colors.gray,
         borderBottomWidth: .5,
       },
+      headerTitleContainerStyle: {
+        right: 50,
+        left: 50
+      },
       headerTitleStyle: {
         textAlign: "center",
         fontWeight: "400",

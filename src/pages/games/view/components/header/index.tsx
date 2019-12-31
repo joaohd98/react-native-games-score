@@ -1,22 +1,34 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
-import {Helpers} from '../../../../../helpers';
-import {Colors} from '../../../../../theme/colors';
-import {SearchInputComponent} from '../../../../../components/search-input';
+import {GamesHeaderComponentStyle} from './styles';
 
 export const GamesHeaderComponent = () => {
 
-  const bars = Helpers.getIcon('bars', 30, Colors.blue);
+  const {
+    Input,
+    SearchIcon,
+    CloseIcon,
+    BarIcon,
+  } = GamesHeaderComponentStyle;
 
   return ({
-    headerTitle: <SearchInputComponent />,
+    headerTitle: (
+      <>
+        <SearchIcon name="search" />
+        <Input/>
+        <TouchableOpacity>
+          <CloseIcon name="times-circle" />
+        </TouchableOpacity>
+      </>
+    ),
     headerRight: (
       <TouchableOpacity>
-        { bars }
+        <BarIcon name="filter"/>
       </TouchableOpacity>
     ),
     headerTitleContainerStyle: {
-      left: 15,
+      left: 10,
+      right: 45,
     },
   });
 
