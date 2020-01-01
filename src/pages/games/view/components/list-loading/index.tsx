@@ -13,7 +13,7 @@ export class GamesListLoadingComponent extends Component<any, State> {
     skeletonAnimation: new Animated.Value(0)
   };
 
-  componentDidMount() {
+  componentDidMount = () => {
 
     Animated.loop(
       Animated.timing(this.state.skeletonAnimation, {
@@ -22,7 +22,7 @@ export class GamesListLoadingComponent extends Component<any, State> {
       })
     ).start();
 
-  }
+  };
 
   render = () => {
 
