@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 import {GamesListComponentStyle} from '../list/styles';
 import {Colors} from '../../../../../theme/colors';
 
+
 const {
   Card,
   CardLogo,
@@ -13,7 +14,7 @@ const {
   CardDescription,
   CardScore,
   CardFooterContent,
-  CardFooterButton,
+  CardFooterText,
 } = GamesListComponentStyle;
 
 export const GamesListLoadingComponentStyle = {
@@ -46,7 +47,7 @@ export const GamesListLoadingComponentStyle = {
     background-color: ${Colors.grayLight};
   `,
   CardFooterContent: styled(CardFooterContent)``,
-  CardFooterButton: styled(CardFooterButton)`
+  CardFooterText: styled(CardFooterText)`
     width: 100px
     height: 20px;
     margin-right: 5px;

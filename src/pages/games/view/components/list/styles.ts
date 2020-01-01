@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import {Colors} from '../../../../../theme/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {Animated} from 'react-native';
 
 export const GamesListComponentStyle = {
   Card: styled.View`
@@ -15,7 +16,7 @@ export const GamesListComponentStyle = {
     flex: 1;
     padding: 0 10px;
   `,
-  CardLogo: styled.Image `
+  CardLogo: styled(Animated.Image) `
     width: 100px;
     height: 100px;
     border-radius: 10px;
@@ -23,13 +24,13 @@ export const GamesListComponentStyle = {
   CardInformationContent: styled.View`
     margin-top: 10px;
   `,
-  CardTitle: styled.Text `
+  CardTitle: styled(Animated.Text) `
     font-size: 16px;
     line-height: 18px;
     font-weight: bold;
     color: ${Colors.black}
   `,
-  CardType: styled.Text `
+  CardType: styled(Animated.Text) `
     font-size: 13px;
     color: ${Colors.black};
     font-weight: bold;
@@ -37,7 +38,7 @@ export const GamesListComponentStyle = {
   CardInformation: styled.Text `
     color: ${Colors.gray};
   `,
-  CardDescription: styled.Text `
+  CardDescription: styled(Animated.Text)`
     font-size: 12px;
     color: ${Colors.black};
   `,
@@ -50,7 +51,7 @@ export const GamesListComponentStyle = {
     flex-direction: row;
     padding: 5px
   `,
-  CardFooterText: styled.Text`
+  CardFooterText: styled(Animated.Text)`
     font-size: 18px;
     color: ${Colors.blue};
   `,
@@ -60,7 +61,7 @@ export const GamesListComponentStyle = {
     color: ${Colors.blue};
     top: 2px
   `,
-  CardScore: styled.View`
+  CardScore: styled(Animated.View)`
     background-color: red;
     padding: 5px;
     border-radius: 100px;
