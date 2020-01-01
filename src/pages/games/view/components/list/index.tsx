@@ -73,7 +73,7 @@ export class GamesListComponent extends Component {
 
     return (
       <FlatList
-        data={[1, 2, 3, 4, 5]}
+        data={[1]}
         keyExtractor={item => item.toString()}
         renderItem={item => this.renderCard()}/>
     )
