@@ -200,8 +200,11 @@ task copyDownloadableDepsToLibs(type: Copy) {
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
 
+//FontAwesome
 project.ext.vectoricons = [
     iconFontNames: [ 'FontAwesome.ttf' ]
 ]
-
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+
+//Env
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
