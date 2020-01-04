@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {GamesListLoadingComponentStyle} from './styles';
-import {Animated, StyleSheet, View} from 'react-native';
+import {Animated, View} from 'react-native';
 import {Colors} from '../../../../../theme/colors';
 
 interface State {

@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 import {Colors} from '../../../../../theme/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Animated} from 'react-native';
+import {ProgressiveImageComponent} from '../../../../../components/progressive-image';
 
 export const GamesListComponentStyle = {
   Card: styled.View`
@@ -16,9 +17,9 @@ export const GamesListComponentStyle = {
     flex: 1;
     padding: 0 10px;
   `,
-  CardLogo: styled(Animated.Image) `
-    width: 100px;
-    height: 100px;
+  CardLogo: styled(ProgressiveImageComponent) `
+    width: 120px;
+    height: 120px;
     border-radius: 10px;
   `,
   CardInformationContent: styled.View`
