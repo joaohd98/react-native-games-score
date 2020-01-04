@@ -5,6 +5,8 @@ export class Colors {
   static grayLight = "#f2f2f2";
   static blue = "#0066CC";
   static white = "#FFF";
+  static red = "#BB2124";
+  static backgroundModal = "rgba(0, 0, 0, 0.6)";
 
   static skeleton = [
     "#f2f2f2",
