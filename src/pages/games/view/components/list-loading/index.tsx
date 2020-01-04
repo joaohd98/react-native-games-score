@@ -51,7 +51,7 @@ export class GamesListLoadingComponent extends Component<any, State> {
       <Card>
         <View />
         <CardContent>
-          <CardLogo source={{uri: ''}} resizeMode={'stretch'} style={styles}/>
+          <CardLogo source={{}} resizeMode={'stretch'} style={styles}/>
           <CardDescriptionContent>
             <CardTitle style={styles}/>
             <CardInformationContent>
