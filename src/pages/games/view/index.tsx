@@ -10,11 +10,9 @@ export class GamesPage extends Component {
 
   render() {
 
-
     return (
       <Container>
         <GamesListComponent/>
-        <GamesListLoadingComponent/>
       </Container>
     )
 

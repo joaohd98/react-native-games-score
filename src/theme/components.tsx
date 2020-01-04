@@ -10,4 +10,6 @@ export const FlexColumn = styled.View`
 `;
 
 export const Container = styled.View`
+  height: 100%;
+  width: 100%;
 `;

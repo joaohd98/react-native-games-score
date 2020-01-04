@@ -5,8 +5,8 @@ interface Props {
   image?: number;
   title?: string;
   message?: string;
-  button?: string
-  onButtonPress?: () => {};
+  buttonText?: string
+  onButtonPress?: () => void;
 }
 
 export class WarningMessageComponent extends Component<Props> {
@@ -25,7 +25,7 @@ export class WarningMessageComponent extends Component<Props> {
       image,
       title,
       message,
-      button,
+      buttonText,
       onButtonPress
     } = this.props;
 
@@ -34,7 +34,7 @@ export class WarningMessageComponent extends Component<Props> {
         { image ? <Image source={image} /> : null }
         { title ? <Title>{ title }</Title> : null }
         { message ? <Message>{ message }</Message> : null }
-        { button && onButtonPress ?  <Button onPress={onButtonPress} title={button} /> : null }
+        { buttonText && onButtonPress ?  <Button onPress={onButtonPress} title={buttonText} /> : null }
       </View>
     )
 
