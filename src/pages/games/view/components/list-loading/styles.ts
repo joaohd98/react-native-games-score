@@ -1,7 +1,6 @@
 import styled from 'styled-components/native';
-import {GamesListComponentStyle} from '../list/styles';
 import {Colors} from '../../../../../theme/colors';
-
+import {GamesCardComponentStyle} from '../card/styles';
 
 const {
   Card,
@@ -15,7 +14,7 @@ const {
   CardScore,
   CardFooterContent,
   CardFooterText,
-} = GamesListComponentStyle;
+} = GamesCardComponentStyle;
 
 export const GamesListLoadingComponentStyle = {
   Card: styled(Card)``,
