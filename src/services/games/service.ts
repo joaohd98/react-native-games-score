@@ -1,24 +1,17 @@
-import {Service} from '../index';
+import {Service} from '../service';
 import {
   GameServiceRequestModel,
   GamesServiceResponseModel,
 } from './model';
+import {ServiceResposne} from '../model';
 
-export class GameService {
+export class GameService extends Service {
 
   static path: string = "games";
 
-  static request = () => {
+  static getGames = (request: GameServiceRequestModel): Promise<ServiceResposne<GamesServiceResponseModel>> => {
 
-    Service.makeGetRequest<GameServiceRequestModel, GamesServiceResponseModel >(GameService.path, {}).then(result => {
-
-      console.log(result);
-
-    }).catch(error => {
-
-      console.log(error);
-
-    })
+    return GameService.makeGetRequest<GamesServiceResponseModel, GameServiceRequestModel>(GameService.path,  request);
 
   }
 
