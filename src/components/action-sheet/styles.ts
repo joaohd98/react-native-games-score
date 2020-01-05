@@ -1,0 +1,45 @@
+import styled from 'styled-components/native';
+import {Colors} from '../../theme/colors';
+
+export const ActionSheetStyles = {
+  ModalContainer: styled.TouchableOpacity`
+    height: 100%;
+    width: 100%;
+    background-color: ${Colors.backgroundModal};
+  `,
+  ModalView: styled.TouchableOpacity`
+    position: absolute;
+    bottom: 50px;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;    
+  `,
+  ActionTitle: styled.Text`
+    font-size:  15px;
+    text-align: center;
+    color: ${Colors.gray};
+  `,
+  ActionList: styled.View`
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    overflow: hidden;
+  `,
+  ActionButton: styled.TouchableOpacity`
+    padding: 15px;
+    border-bottom-width: 1px;
+    border-bottom-color: ${Colors.gray};
+    background-color: ${Colors.grayLight};
+  `,
+  ActionCloseButton: styled.TouchableOpacity`
+    padding: 15px;
+    border-radius: 10px;
+    background-color: ${Colors.grayLight}
+  `,
+  ActionText: styled.Text `
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: ${Colors.blue};
+  `
+};

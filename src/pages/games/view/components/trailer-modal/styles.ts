@@ -22,6 +22,5 @@ export const GamesTrailerModalComponentStyles = {
   CloseIcon: styled(Icon)`
     font-size: 30px;
     color: ${Colors.red}
-
   `
 };

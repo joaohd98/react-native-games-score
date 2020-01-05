@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {
   Modal,
   Text,
-  TouchableWithoutFeedback,
 } from 'react-native';
 import {GamesTrailerModalComponentStyles} from './styles';
 

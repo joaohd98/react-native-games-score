@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {FilterGamesOrderingComponentStyles} from './styles';
+import {ActionSheet} from '../../../../../../components/action-sheet';
 
 export class FilterGamesOrderingComponent extends Component {
 
@@ -12,11 +13,14 @@ export class FilterGamesOrderingComponent extends Component {
     } = FilterGamesOrderingComponentStyles;
 
     return (
-      <View>
-        <Icon name={"arrow-up"}/>
-        <Icon name={"arrow-down"}/>
-        <Text>AAA</Text>
-      </View>
+      <>
+        <View>
+          <Icon name={"arrow-up"}/>
+          <Icon name={"arrow-down"}/>
+          <Text>AAA</Text>
+        </View>
+        <ActionSheet visible={true} closeModal={() => {}} />
+      </>
     );
 
   };
