@@ -27,7 +27,7 @@ export const ActionSheetStyles = {
   `,
   ActionButton: styled.TouchableOpacity`
     padding: 15px;
-    border-bottom-width: 1px;
+    border-bottom-width: 0.5px;
     border-bottom-color: ${Colors.gray};
     background-color: ${Colors.grayLight};
   `,
@@ -39,7 +39,7 @@ export const ActionSheetStyles = {
   ActionText: styled.Text `
     text-align: center;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 500;
     color: ${Colors.blue};
   `
 };

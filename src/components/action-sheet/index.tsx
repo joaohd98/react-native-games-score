@@ -2,16 +2,40 @@ import React, {Component} from 'react';
 import {Modal} from 'react-native';
 import {ActionSheetStyles} from './styles';
 
-interface Props {
+export interface ActionSheetProps {
+  title: string,
+  options: { text: string, callback: () => void }[],
   visible: boolean,
   closeModal: () => void
 }
 
-export class ActionSheet extends Component<Props> {
+export class ActionSheet extends Component<ActionSheetProps> {
+
+  renderOptions = (): JSX.Element[] => {
+
+    const {
+      ActionButton,
+      ActionText,
+    } = ActionSheetStyles;
+
+    let elements: JSX.Element[] = [];
+
+    this.props.options.forEach(option => {
+      elements.push(
+        <ActionButton key={option.text} activeOpacity={0.9} onPress={option.callback}>
+          <ActionText>{ option.text }</ActionText>
+        </ActionButton>
+      );
+    });
+
+    return elements;
+
+  };
 
   render = () => {
 
     const {
+      title,
       visible,
       closeModal
     } = this.props;
@@ -32,20 +56,12 @@ export class ActionSheet extends Component<Props> {
           <ModalView activeOpacity={1} onPress={e => e.stopPropagation()}>
             <ActionList>
               <ActionButton activeOpacity={1}>
-                <ActionTitle>Titulo</ActionTitle>
+                <ActionTitle>{ title }</ActionTitle>
               </ActionButton>
-              <ActionButton activeOpacity={0.9}>
-                <ActionText>Test</ActionText>
-              </ActionButton>
-              <ActionButton activeOpacity={0.9}>
-                <ActionText>Test</ActionText>
-              </ActionButton>
-              <ActionButton activeOpacity={0.9}>
-                <ActionText>Test</ActionText>
-              </ActionButton>
+              { this.renderOptions() }
             </ActionList>
-            <ActionCloseButton activeOpacity={0.9}>
-              <ActionText>Test</ActionText>
+            <ActionCloseButton activeOpacity={0.9} onPress={closeModal}>
+              <ActionText>Cancelar</ActionText>
             </ActionCloseButton>
           </ModalView>
         </ModalContainer>
