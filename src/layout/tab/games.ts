@@ -8,10 +8,12 @@ import {
 import {GamesPage} from '../../pages/games/view';
 import {Helpers} from '../../helpers';
 import {CreateStackNavigator} from '../../router/stack-navigator';
+import {FilterGamesPage} from '../../pages/games/sub-views/filter';
 
 export const GamesTab: NavigationRouteConfig<NavigationBottomTabOptions, NavigationTabProp>  = {
   screen: CreateStackNavigator([
-    GamesPage
+    FilterGamesPage,
+    GamesPage,
   ]),
   navigationOptions: {
     title: "Games",
