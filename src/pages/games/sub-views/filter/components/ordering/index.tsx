@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {FilterGamesOrderingComponentStyles} from './styles';
 import {
-  ActionSheet,
+  ActionSheetComponent,
   ActionSheetProps,
 } from '../../../../../../components/action-sheet';
 
@@ -9,7 +9,7 @@ interface State {
   isActionSheetOpen: boolean
 }
 
-export class FilterGamesOrderingComponent extends Component {
+export class FilterGamesOrderingComponent extends Component<any, State> {
 
   state = {
     isActionSheetOpen: false
@@ -27,7 +27,7 @@ export class FilterGamesOrderingComponent extends Component {
         { text: "BBB", callback: () => {} },
         { text: "CCC", callback: () => {} },
       ],
-      closeModal: () => this.setState({ isActionSheetOpen: false })
+      close: () => this.setState({ isActionSheetOpen: false })
     }
 
   };
@@ -47,7 +47,7 @@ export class FilterGamesOrderingComponent extends Component {
           <Icon name={"arrow-down"}/>
           <Text>AAA</Text>
         </View>
-        <ActionSheet {...this.getActionSheetProps()} />
+        <ActionSheetComponent {...this.getActionSheetProps()} />
       </>
     );
 

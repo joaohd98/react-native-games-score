@@ -1,17 +1,14 @@
 import styled from 'styled-components/native';
 import {Colors} from '../../../../../theme/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {ModalTransparentComponent} from '../../../../../components/modal-transparent';
 
 export const GamesTrailerModalComponentStyles = {
-  ModalContainer: styled.TouchableOpacity`
-    height: 100%;
+  Modal: styled(ModalTransparentComponent)`
+    position: absolute;
     width: 100%;
-    background-color: ${Colors.backgroundModal};
-  `,
-  ModalView: styled.TouchableOpacity`
-    width: 100%;
+    bottom: 50%;
     background-color: ${Colors.white};
-    margin: auto;
     padding: 30px 20px;
   `,
   CloseIconContainer: styled.TouchableOpacity`

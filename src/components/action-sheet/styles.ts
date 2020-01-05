@@ -1,13 +1,9 @@
 import styled from 'styled-components/native';
 import {Colors} from '../../theme/colors';
+import {ModalTransparentComponent} from '../modal-transparent';
 
-export const ActionSheetStyles = {
-  ModalContainer: styled.TouchableOpacity`
-    height: 100%;
-    width: 100%;
-    background-color: ${Colors.backgroundModal};
-  `,
-  ModalView: styled.TouchableOpacity`
+export const ActionSheetComponentStyles = {
+  Modal: styled(ModalTransparentComponent)`
     position: absolute;
     bottom: 50px;
     width: 90%;

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {FilterGamesOrderingComponent} from './ components/ordering';
 import {FilterGamesPageStyles} from './styles';
+import {FilterGamesOrderingComponent} from './components/ordering';
 
 export class FilterGamesPage extends Component {
 

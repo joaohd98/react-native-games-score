@@ -13,3 +13,10 @@ export const Container = styled.View`
   height: 100%;
   width: 100%;
 `;
+
+export const ModalView = styled.TouchableOpacity`
+  
+`;
+
+
+

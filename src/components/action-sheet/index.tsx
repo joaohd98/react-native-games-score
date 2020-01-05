@@ -1,22 +1,21 @@
 import React, {Component} from 'react';
-import {Modal} from 'react-native';
-import {ActionSheetStyles} from './styles';
+import {ActionSheetComponentStyles} from './styles';
 
 export interface ActionSheetProps {
   title: string,
   options: { text: string, callback: () => void }[],
   visible: boolean,
-  closeModal: () => void
+  close: () => void
 }
 
-export class ActionSheet extends Component<ActionSheetProps> {
+export class ActionSheetComponent extends Component<ActionSheetProps> {
 
   renderOptions = (): JSX.Element[] => {
 
     const {
       ActionButton,
       ActionText,
-    } = ActionSheetStyles;
+    } = ActionSheetComponentStyles;
 
     let elements: JSX.Element[] = [];
 
@@ -37,34 +36,29 @@ export class ActionSheet extends Component<ActionSheetProps> {
     const {
       title,
       visible,
-      closeModal
+      close
     } = this.props;
 
     const {
-      ModalContainer,
-      ModalView,
+      Modal,
       ActionTitle,
       ActionList,
       ActionButton,
       ActionText,
       ActionCloseButton
-    } = ActionSheetStyles;
+    } = ActionSheetComponentStyles;
 
     return (
-      <Modal visible={visible} animationType={"slide"} transparent={true}>
-        <ModalContainer activeOpacity={1} onPress={closeModal}>
-          <ModalView activeOpacity={1} onPress={e => e.stopPropagation()}>
-            <ActionList>
-              <ActionButton activeOpacity={1}>
-                <ActionTitle>{ title }</ActionTitle>
-              </ActionButton>
-              { this.renderOptions() }
-            </ActionList>
-            <ActionCloseButton activeOpacity={0.9} onPress={closeModal}>
-              <ActionText>Cancelar</ActionText>
-            </ActionCloseButton>
-          </ModalView>
-        </ModalContainer>
+      <Modal visible={visible} close={close}>
+        <ActionList>
+          <ActionButton activeOpacity={1}>
+            <ActionTitle>{ title }</ActionTitle>
+          </ActionButton>
+          { this.renderOptions() }
+        </ActionList>
+        <ActionCloseButton activeOpacity={0.9} onPress={close}>
+          <ActionText>Cancelar</ActionText>
+        </ActionCloseButton>
       </Modal>
     )
 

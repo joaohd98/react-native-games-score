@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {
-  Modal,
   Text,
 } from 'react-native';
 import {GamesTrailerModalComponentStyles} from './styles';
+import {ModalTransparentComponent} from '../../../../../components/modal-transparent';
 
 interface Props {
   visible: boolean,
@@ -20,26 +20,21 @@ export class GamesTrailerModalComponent extends Component<Props> {
     } = this.props;
 
     const {
-      ModalContainer,
-      ModalView,
+      Modal,
       CloseIconContainer,
       CloseIcon,
     } = GamesTrailerModalComponentStyles;
 
     return (
-      <Modal visible={visible} animationType={"slide"} transparent={true}>
-        <ModalContainer activeOpacity={1} onPress={closeModal}>
-          <ModalView activeOpacity={1} onPress={e => e.stopPropagation()}>
-            <CloseIconContainer onPress={closeModal}>
-              <CloseIcon name={"close"} />
-            </CloseIconContainer>
-            <Text>AAAAA</Text>
-            <Text>AAAAA</Text>
-            <Text>AAAAA</Text>
-            <Text>AAAAA</Text>
-            <Text>AAAAA</Text>
-          </ModalView>
-        </ModalContainer>
+      <Modal visible={visible} close={closeModal}>
+        <CloseIconContainer onPress={closeModal}>
+          <CloseIcon name={"close"} />
+        </CloseIconContainer>
+        <Text>AAAAA</Text>
+        <Text>AAAAA</Text>
+        <Text>AAAAA</Text>
+        <Text>AAAAA</Text>
+        <Text>AAAAA</Text>
       </Modal>
     );
 

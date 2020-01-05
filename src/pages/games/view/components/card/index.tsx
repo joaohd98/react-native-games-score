@@ -86,7 +86,7 @@ export class GamesCardComponent extends Component<any, State> {
             </CardScore>
           </CardContent>
           <CardFooterContent>
-            <CardFooterButton onPress={() => this.setState({ isModalVisible: !isModalVisible })}>
+            <CardFooterButton onPress={() => this.setState({ isModalVisible: true })}>
               <CardFooterText>Watch Trailer</CardFooterText>
             </CardFooterButton>
             <CardFooterButton onPress={() => this.setState({ isExpandable: !isExpandable })}>
