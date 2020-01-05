@@ -1,5 +1,10 @@
 export interface GameServiceRequestModel {
-
+  search: string,
+  platforms: string | null,
+  publishers: string | null,
+  genres: string | null,
+  dates: string | null,
+  ordering: string | null
 }
 
 export interface GamesServiceResponseModel {

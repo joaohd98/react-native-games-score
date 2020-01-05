@@ -1,14 +1,11 @@
-import {applyMiddleware, combineReducers, createStore} from "redux";
-import {GamesPageReducer} from '../pages/games/view/redux/games-page-reducer';
+import {applyMiddleware, createStore} from "redux";
+import {Reducers} from './reducers';
+import {rootSaga, sagaMiddleware} from './saga';
 
-export interface StatesReducers {
-  gamesPageReducer: any
-}
+const store = createStore(Reducers, applyMiddleware(
+  sagaMiddleware,
+));
 
-const reducers = combineReducers({
-  gamesPageReducer: GamesPageReducer
-});
-
-const store = createStore(reducers, applyMiddleware());
+sagaMiddleware.run(rootSaga);
 
 export { store };

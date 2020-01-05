@@ -12,8 +12,8 @@ import {FilterGamesPage} from '../../pages/games/sub-views/filter';
 
 export const GamesTab: NavigationRouteConfig<NavigationBottomTabOptions, NavigationTabProp>  = {
   screen: CreateStackNavigator([
-    FilterGamesPage,
     GamesPage,
+    FilterGamesPage,
   ]),
   navigationOptions: {
     title: "Games",

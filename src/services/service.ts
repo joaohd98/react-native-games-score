@@ -1,9 +1,9 @@
 import Config from 'react-native-config';
-import {ServiceResposne, ServiceStatus} from './model';
+import {ServiceResponse, ServiceStatus} from './model';
 
 export class Service {
 
-  static makeGetRequest  = async <Response, Request = {}>(path: string, parameters: Request, header: HeadersInit_ = {}): Promise<ServiceResposne<Response>> => {
+  static makeGetRequest  = async <Response, Request = {}>(path: string, parameters: Request, header: HeadersInit_ = {}): Promise<ServiceResponse<Response>> => {
 
     let pathGet = `${path}?`;
 
@@ -15,13 +15,13 @@ export class Service {
 
   };
 
-  static makePostRequest = async <Response, Request = {}>(path: string, parameters: Request, header: HeadersInit_ = {}): Promise<ServiceResposne<Response>> => {
+  static makePostRequest = async <Response, Request = {}>(path: string, parameters: Request, header: HeadersInit_ = {}): Promise<ServiceResponse<Response>> => {
 
     return Service.makeRequest(path, "POST", header, parameters)
 
   };
 
-  private static makeRequest = async <Response>(path: string, method: "POST" | "GET", headers: HeadersInit_, body: BodyInit_): Promise<ServiceResposne<Response>> => {
+  private static makeRequest = async <Response>(path: string, method: "POST" | "GET", headers: HeadersInit_, body: BodyInit_): Promise<ServiceResponse<Response>> => {
 
     const url = Config.API_URL + path;
 
