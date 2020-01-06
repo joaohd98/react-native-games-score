@@ -33,7 +33,6 @@ export class GamesListLoadingComponent extends Component<any, State> {
       CardTitle,
       CardType,
       CardDescriptionContent,
-      CardDescription,
       CardScore,
       CardFooterContent,
       CardFooterText,
@@ -55,15 +54,12 @@ export class GamesListLoadingComponent extends Component<any, State> {
             <CardInformationContent>
               <CardType style={styles}/>
               <CardType style={styles}/>
-            </CardInformationContent>
-            <CardInformationContent>
-              <CardDescription style={styles}/>
+              <CardType style={styles}/>
             </CardInformationContent>
           </CardDescriptionContent>
           <CardScore style={styles} />
         </CardContent>
         <CardFooterContent>
-          <CardFooterText style={styles}/>
           <CardFooterText style={styles}/>
         </CardFooterContent>
       </Card>

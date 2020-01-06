@@ -25,23 +25,20 @@ export const GamesCardComponentStyle = {
   CardInformationContent: styled.View`
     margin-top: 10px;
   `,
+  CardType: styled(Animated.Text) `
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: ${Colors.black};
+    font-weight: bold;
+  `,
   CardTitle: styled(Animated.Text) `
     font-size: 16px;
     line-height: 18px;
     font-weight: bold;
     color: ${Colors.black}
   `,
-  CardType: styled(Animated.Text) `
-    font-size: 13px;
-    color: ${Colors.black};
-    font-weight: bold;
-  `,
   CardInformation: styled.Text `
     color: ${Colors.gray};
-  `,
-  CardDescription: styled(Animated.Text)`
-    font-size: 12px;
-    color: ${Colors.black};
   `,
   CardFooterContent: styled.View `
     margin-top: 10px;

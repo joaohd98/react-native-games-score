@@ -10,7 +10,6 @@ const {
   CardTitle,
   CardType,
   CardDescriptionContent,
-  CardDescription,
   CardScore,
   CardFooterContent,
   CardFooterText,
@@ -19,37 +18,32 @@ const {
 export const GamesListLoadingComponentStyle = {
   Card: styled(Card)``,
   CardLogo: styled(CardLogo)`
-    background-color: ${Colors.grayLight};
+    background-color: ${Colors.skeleton[0]};
   `,
   CardContent: styled(CardContent)``,
   CardInformationContent: styled(CardInformationContent)``,
   CardTitle: styled(CardTitle)`
     width: 100%
     height: 10px;
-    background-color: ${Colors.grayLight};
+    background-color: ${Colors.skeleton[0]};
   `,
   CardType: styled(CardType)`
     width: 100%
-    height: 10px;
+    height: 25px;
     margin-top: 5px;
-    background-color: ${Colors.grayLight};
+    background-color: ${Colors.skeleton[0]};
   `,
   CardDescriptionContent: styled(CardDescriptionContent)``,
-  CardDescription: styled(CardDescription)`
-    width: 100%
-    height: 30px;
-    background-color: ${Colors.grayLight};
-  `,
   CardScore: styled(CardScore)`
     height: 30px;
     width: 30px;
-    background-color: ${Colors.grayLight};
+    background-color: ${Colors.skeleton[0]};
   `,
   CardFooterContent: styled(CardFooterContent)``,
   CardFooterText: styled(CardFooterText)`
     width: 100px
     height: 20px;
     margin-right: 5px;
-    background-color: ${Colors.grayLight};
+    background-color: ${Colors.skeleton[0]};
   `,
 };
