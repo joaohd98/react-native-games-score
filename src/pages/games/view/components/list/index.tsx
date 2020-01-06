@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import {
-  Animated,
   FlatList,
 } from 'react-native';
-import {GamesHeaderComponent} from '../header';
 import {GamesCardComponent} from '../card';
 import {WarningMessageComponent} from '../../../../../components/warning-message';
 import {images} from '../../../../../assets';
 import {GameListLoadingFooterComponent} from '../list-loading-footer';
+import {GamesServiceResponseModel} from '../../../../../services/games/model';
 
-export class GamesListComponent extends Component {
+interface Props {
+  games: GamesServiceResponseModel
+}
 
-  static navigationOptions = GamesHeaderComponent;
+export class GamesListComponent extends Component<Props> {
 
-  renderListEmptyCompoent = (): JSX.Element => {
+  renderListEmptyComponent = (): JSX.Element => {
 
     return <WarningMessageComponent
       image={images.gameOver}
@@ -27,12 +28,14 @@ export class GamesListComponent extends Component {
 
   render = () => {
 
+    const { games } = this.props;
+
     return (
       <FlatList
-        data={[1, 2]}
-        keyExtractor={item => item.toString()}
-        renderItem={item => <GamesCardComponent />}
-        ListEmptyComponent={this.renderListEmptyCompoent}
+        data={games.results}
+        keyExtractor={item => item.id.toString()}
+        renderItem={({item}) => <GamesCardComponent content={item} />}
+        ListEmptyComponent={this.renderListEmptyComponent}
         ListFooterComponent={<GameListLoadingFooterComponent/>}
         onRefresh={() => {}}
         refreshing={false}

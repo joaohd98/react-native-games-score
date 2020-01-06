@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {GamesListLoadingComponentStyle} from './styles';
-import {Animated, View} from 'react-native';
+import {Animated, ScrollView, View} from 'react-native';
 import {Colors} from '../../../../../theme/colors';
 
 interface State {
@@ -24,8 +24,7 @@ export class GamesListLoadingComponent extends Component<any, State> {
 
   };
 
-  render = () => {
-
+  renderCard = (key: number): JSX.Element => {
     const {
       Card,
       CardLogo,
@@ -48,9 +47,9 @@ export class GamesListLoadingComponent extends Component<any, State> {
     };
 
     return (
-      <Card>
+      <Card key={key}>
         <CardContent>
-          <CardLogo source={{}} resizeMode={'stretch'} style={styles}/>
+          <CardLogo source={{}} resizeMode={'stretch'} />
           <CardDescriptionContent>
             <CardTitle style={styles}/>
             <CardInformationContent>
@@ -69,6 +68,21 @@ export class GamesListLoadingComponent extends Component<any, State> {
         </CardFooterContent>
       </Card>
     )
+
+  };
+
+  render = () => {
+
+    let cards: JSX.Element[] = [];
+
+    for(let i = 0; i < 10; i++)
+      cards.push(this.renderCard(i));
+
+    return (
+      <ScrollView scrollEnabled={false}>
+        { cards }
+      </ScrollView>
+    );
   }
 
 }

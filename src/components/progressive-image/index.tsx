@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {
-  Animated,  ImageProps,
+  Animated, ImageProps,
 } from 'react-native';
 import {Colors} from '../../theme/colors';
 import {ProgressiveImageComponentStyles} from './styles';

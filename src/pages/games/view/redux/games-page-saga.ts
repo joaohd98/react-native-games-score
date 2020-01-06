@@ -1,4 +1,4 @@
-import { put, takeLatest, call } from 'redux-saga/effects'
+import { put, takeEvery, call } from 'redux-saga/effects'
 import {
   GamePageActionType, GamesPageAction,
   GamesPageActionConst,
@@ -6,7 +6,7 @@ import {
 import {GameService} from '../../../../services/games/service';
 
 export function *gamesPageSearchGamesSaga() {
-  yield takeLatest(GamesPageActionConst.GAMES_FETCH_REQUESTED, searchGames);
+  yield takeEvery(GamesPageActionConst.GAMES_FETCH_REQUESTED, searchGames);
 }
 
 function *searchGames(action: GamePageActionType) {

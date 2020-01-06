@@ -7,9 +7,9 @@ export class Service {
 
     let pathGet = `${path}?`;
 
-    for(let index in parameters) {
-      pathGet += `${index}=${parameters[index]}`
-    }
+    for(let index in parameters)
+      if(parameters[index])
+        pathGet += `${index}=${parameters[index]}`;
 
     return Service.makeRequest(pathGet, "GET", header, parameters)
 

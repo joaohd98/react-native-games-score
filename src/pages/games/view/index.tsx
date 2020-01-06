@@ -7,6 +7,14 @@ import {connect} from 'react-redux';
 import {bindActionCreators, Dispatch} from 'redux';
 import {GamesPageInitialState} from './redux/games-page-reducer';
 import {StatesReducers} from '../../../redux/reducers';
+import {ServiceStatus} from '../../../services/model';
+import {GamesListLoadingComponent} from './components/list-loading';
+import {Text, View} from 'react-native';
+import {
+  WarningMessageComponent,
+  WarningMessageComponentProps,
+} from '../../../components/warning-message';
+import {images} from '../../../assets';
 
 class Games extends Component<GamesPageModel.Props> {
 
@@ -20,11 +28,35 @@ class Games extends Component<GamesPageModel.Props> {
 
   };
 
+  getWarningMessage = (status: ServiceStatus): WarningMessageComponentProps => {
+
+    const {functions, filters} = this.props;
+
+    return {
+      image: images.gameOver,
+      title: "Warning",
+      message: status === ServiceStatus.exception ? "Something went wrong, try again later!" : "There is no internet connection, try again later!",
+      buttonText: "Try Again",
+      onButtonPress: () => functions?.searchGames(filters!)
+    }
+
+  };
+
   render() {
+
+    const { status, games } = this.props;
+
+    const getElement = {
+      [ServiceStatus.loading]:  <GamesListLoadingComponent/>,
+      [ServiceStatus.noInternetConnection]: <WarningMessageComponent {...this.getWarningMessage(ServiceStatus.noInternetConnection)}/>,
+      [ServiceStatus.exception]: <WarningMessageComponent {...this.getWarningMessage(ServiceStatus.exception!)} />,
+      [ServiceStatus.success]: <GamesListComponent games={games!}/>,
+      [ServiceStatus.noAction]: <View/>,
+    };
 
     return (
       <Container>
-        <GamesListComponent/>
+        { getElement[status!] }
       </Container>
     )
 

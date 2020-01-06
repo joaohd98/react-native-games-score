@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { WarningMessageComponentStyle } from './styles';
 
-interface Props {
+export interface WarningMessageComponentProps {
   image?: number;
   title?: string;
   message?: string;
@@ -9,7 +9,7 @@ interface Props {
   onButtonPress?: () => void;
 }
 
-export class WarningMessageComponent extends Component<Props> {
+export class WarningMessageComponent extends Component<WarningMessageComponentProps> {
 
   render = () => {
 

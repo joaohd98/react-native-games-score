@@ -1,13 +1,18 @@
 import React, {Component} from 'react';
 import {GamesCardComponentStyle} from './styles';
 import {GamesTrailerModalComponent} from '../trailer-modal';
+import {GameServiceResponseCardModel} from '../../../../../services/games/model';
+
+interface Props {
+  content: GameServiceResponseCardModel,
+}
 
 interface State {
   isExpandable: boolean,
   isModalVisible: boolean,
 }
 
-export class GamesCardComponent extends Component<any, State> {
+export class GamesCardComponent extends Component<Props, State> {
 
   state = {
     isExpandable: false,
@@ -54,11 +59,15 @@ export class GamesCardComponent extends Component<any, State> {
     } = GamesCardComponentStyle;
 
     const {
+      content
+    } = this.props;
+
+    const {
       isExpandable,
       isModalVisible
     } = this.state;
 
-    const source = { uri: 'https://media.rawg.io/media/games/b11/b115b2bc6a5957a917bc7601f4abdda2.jpg' };
+    const source = { uri: content.background_image };
 
     return (
       <>
@@ -66,13 +75,13 @@ export class GamesCardComponent extends Component<any, State> {
           <CardContent>
             <CardLogo source={source} resizeMode={'stretch'}  />
             <CardDescriptionContent>
-              <CardTitle>Red Dead Redemption</CardTitle>
+              <CardTitle>{ content.name }</CardTitle>
               <CardInformationContent>
                 <CardType>
-                  Platform: <CardInformation>Playstation 4</CardInformation>
+                  Platform: <CardInformation>{ content.platforms[0].platform.name}</CardInformation>
                 </CardType>
                 <CardType>
-                  Release: <CardInformation>11/06/1998</CardInformation>
+                  Release: <CardInformation>{ content.released }</CardInformation>
                 </CardType>
               </CardInformationContent>
               <CardInformationContent>
@@ -82,7 +91,7 @@ export class GamesCardComponent extends Component<any, State> {
               </CardInformationContent>
             </CardDescriptionContent>
             <CardScore>
-              <CardScoreText>98</CardScoreText>
+              <CardScoreText>{ content.metacritic || "TBA" }</CardScoreText>
             </CardScore>
           </CardContent>
           <CardFooterContent>
