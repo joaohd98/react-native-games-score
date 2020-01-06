@@ -21,35 +21,20 @@ export interface GamePageActionType {
 
 export class GamesPageAction {
 
-  static searchGamesFetch = (filter: GameServiceRequestModel) => {
-
-    return (dispatch: Dispatch<GamePageActionType>) => {
-
-      dispatch({
-        type: GamesPageActionConst.GAMES_FETCH_REQUESTED,
-        payload: {
-          status: ServiceStatus.loading,
-        }
-      });
-
+  static searchGamesFetch = (filters: GameServiceRequestModel) => ({
+    type: GamesPageActionConst.GAMES_FETCH_REQUESTED,
+    payload: {
+      status: ServiceStatus.loading,
+      filters: filters
     }
+  });
 
-  };
-
-  static searchGamesFinished = (result: ServiceResponse<GamesServiceResponseModel>) => {
-
-    return (dispatch: Dispatch<GamePageActionType>) => {
-
-      dispatch({
-        type: GamesPageActionConst.GAMES_FETCH_FINISHED,
-        payload: {
-          status: result.status,
-          games: result.response
-        }
-      });
-
+  static searchGamesFinished = (result: ServiceResponse<GamesServiceResponseModel>) => ({
+    type: GamesPageActionConst.GAMES_FETCH_FINISHED,
+    payload: {
+      status: result.status,
+      games: result.response
     }
-
-  }
+  })
 
 }

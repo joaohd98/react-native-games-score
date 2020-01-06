@@ -13,9 +13,7 @@ function *searchGames(action: GamePageActionType) {
 
   const result = yield call(() => GameService.getGames(action.payload.filters!));
 
-  console.log(result);
-
-  //yield put(GamesPageAction.searchGamesFinished(result));
+  yield put(GamesPageAction.searchGamesFinished(result));
 
 }
 

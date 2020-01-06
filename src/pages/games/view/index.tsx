@@ -14,9 +14,9 @@ class Games extends Component<GamesPageModel.Props> {
 
   componentDidMount = () => {
 
-    //const {functions, filters} = this.props;
+    const {functions, filters} = this.props;
 
-    //functions?.searchGames(filters!);
+    functions?.searchGames(filters!);
 
   };
 
