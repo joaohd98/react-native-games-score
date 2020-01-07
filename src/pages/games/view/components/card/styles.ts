@@ -60,13 +60,16 @@ export const GamesCardComponentStyle = {
     top: 2px
   `,
   CardScore: styled(Animated.View)`
-    background-color: red;
+    background-color: ${props => props.color || Colors.gray};
     padding: 5px;
     border-radius: 100px;
-    height: 30px
+    height: 40px;
+    width: 40px;
   `,
   CardScoreText: styled.Text`
     color: ${Colors.white};
+    margin: auto;
+    align-items: center
     font-weight: bold;
   `
 };

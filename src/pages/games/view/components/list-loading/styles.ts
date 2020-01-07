@@ -35,8 +35,6 @@ export const GamesListLoadingComponentStyle = {
   `,
   CardDescriptionContent: styled(CardDescriptionContent)``,
   CardScore: styled(CardScore)`
-    height: 30px;
-    width: 30px;
     background-color: ${Colors.skeleton[0]};
   `,
   CardFooterContent: styled(CardFooterContent)``,

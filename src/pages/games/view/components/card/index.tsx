@@ -5,6 +5,7 @@ import {GameServiceResponseCardModel} from '../../../../../services/games/model'
 import {Helpers} from '../../../../../helpers';
 import {images} from '../../../../../assets';
 import {GamesCardComponentConst} from './constants';
+import {Colors} from '../../../../../theme/colors';
 
 interface Props {
   content: GameServiceResponseCardModel,
@@ -20,8 +21,29 @@ export class GamesCardComponent extends Component<Props, State> {
     isModalVisible: false
   };
 
+
+  getScoreColor = (score: number | null) => {
+
+    if(score === null) {
+      return Colors.gray;
+    }
+
+    else if(score > 75) {
+      return Colors.green;
+    }
+
+    else if(score > 50) {
+      return Colors.yellow;
+    }
+
+    else {
+      return Colors.red;
+    }
+
+  };
+
   render = () => {
-    
+
     const constants = GamesCardComponentConst;
 
     const {
@@ -69,7 +91,7 @@ export class GamesCardComponent extends Component<Props, State> {
                 </CardType>
               </CardInformationContent>
             </CardDescriptionContent>
-            <CardScore>
+            <CardScore color={this.getScoreColor(content.metacritic)}>
               <CardScoreText>{ content.metacritic || constants.metacriticNoScore }</CardScoreText>
             </CardScore>
           </CardContent>
