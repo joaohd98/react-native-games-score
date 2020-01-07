@@ -5,12 +5,11 @@ export interface GameServiceRequestModel {
   genres: string | null,
   dates: string | null,
   ordering: string | null
+  page_size: number,
 }
 
 export interface GamesServiceResponseModel {
-  "count": number,
   "next": string,
-  "previous": string,
   "results": GameServiceResponseCardModel[]
 }
 

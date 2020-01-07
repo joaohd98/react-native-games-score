@@ -1,13 +1,9 @@
-import { put, takeEvery, call } from 'redux-saga/effects'
+import { put, takeEvery, call, all } from 'redux-saga/effects'
 import {
   GamePageActionType, GamesPageAction,
   GamesPageActionConst,
 } from './games-page-action';
 import {GameService} from '../../../../services/games/service';
-
-export function *gamesPageSearchGamesSaga() {
-  yield takeEvery(GamesPageActionConst.GAMES_FETCH_REQUESTED, searchGames);
-}
 
 function *searchGames(action: GamePageActionType) {
 
@@ -17,5 +13,17 @@ function *searchGames(action: GamePageActionType) {
 
 }
 
+function *increaseGamesList(action: GamePageActionType) {
+
+  const result = yield call(() => GameService.increaseGames(action.payload.games!));
+
+  yield put(GamesPageAction.increaseGameListFinished(result));
+
+}
+
+export const gameListSaga = [
+  takeEvery(GamesPageActionConst.GAMES_FETCH_REQUESTED, searchGames),
+  takeEvery(GamesPageActionConst.INCREASE_GAMES_FETCH_REQUESTED, increaseGamesList)
+];
 
 

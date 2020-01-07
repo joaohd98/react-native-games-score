@@ -9,7 +9,7 @@ import {GamesPageInitialState} from './redux/games-page-reducer';
 import {StatesReducers} from '../../../redux/reducers';
 import {ServiceStatus} from '../../../services/model';
 import {GamesListLoadingComponent} from './components/list-loading';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import {
   WarningMessageComponent,
   WarningMessageComponentProps,
@@ -44,13 +44,15 @@ class Games extends Component<GamesPageModel.Props> {
 
   render() {
 
-    const { status, games } = this.props;
+    const { status, games, filters, functions } = this.props;
 
     const getElement = {
       [ServiceStatus.loading]:  <GamesListLoadingComponent/>,
       [ServiceStatus.noInternetConnection]: <WarningMessageComponent {...this.getWarningMessage(ServiceStatus.noInternetConnection)}/>,
       [ServiceStatus.exception]: <WarningMessageComponent {...this.getWarningMessage(ServiceStatus.exception!)} />,
-      [ServiceStatus.success]: <GamesListComponent games={games!}/>,
+      [ServiceStatus.success]: <GamesListComponent games={games!}
+                                                   initialNumberRender={filters?.page_size!}
+                                                   increaseListGames={() => functions!.increaseGameList(games!)}/>,
       [ServiceStatus.noAction]: <View/>,
     };
 

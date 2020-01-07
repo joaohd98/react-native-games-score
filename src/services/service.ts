@@ -3,27 +3,32 @@ import {ServiceResponse, ServiceStatus} from './model';
 
 export class Service {
 
-  static makeGetRequest  = async <Response, Request = {}>(path: string, parameters: Request, header: HeadersInit_ = {}): Promise<ServiceResponse<Response>> => {
+  static makeGetRequest  = async <Response, Request = null>(url: string, parameters: Request, header: HeadersInit_ = {}): Promise<ServiceResponse<Response>> => {
 
-    let pathGet = `${path}?`;
+    let urlGet = url;
 
-    for(let index in parameters)
-      if(parameters[index])
-        pathGet += `${index}=${parameters[index]}`;
+    if(parameters) {
 
-    return Service.makeRequest(pathGet, "GET", header, parameters)
+      urlGet = `${url}?`;
+
+      for(let index in parameters)
+        if(parameters[index])
+          urlGet += `${index}=${parameters[index]}`;
+
+    }
+
+    return Service.makeRequest(urlGet, "GET", header, parameters)
 
   };
 
-  static makePostRequest = async <Response, Request = {}>(path: string, parameters: Request, header: HeadersInit_ = {}): Promise<ServiceResponse<Response>> => {
+  static makePostRequest = async <Response, Request = null>(url: string, parameters: Request, header: HeadersInit_ = {}): Promise<ServiceResponse<Response>> => {
 
-    return Service.makeRequest(path, "POST", header, parameters)
+    return Service.makeRequest(url, "POST", header, parameters)
 
   };
 
-  private static makeRequest = async <Response>(path: string, method: "POST" | "GET", headers: HeadersInit_, body: BodyInit_): Promise<ServiceResponse<Response>> => {
+  private static makeRequest = async <Response>(url: string, method: "POST" | "GET", headers: HeadersInit_, body: BodyInit_): Promise<ServiceResponse<Response>> => {
 
-    const url = Config.API_URL + path;
 
     try {
 

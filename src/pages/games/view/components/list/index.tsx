@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
-import {
-  FlatList,
-} from 'react-native';
+import React, {Component} from 'react';
+import {FlatList} from 'react-native';
 import {GamesCardComponent} from '../card';
 import {WarningMessageComponent} from '../../../../../components/warning-message';
 import {images} from '../../../../../assets';
@@ -9,10 +7,36 @@ import {GameListLoadingFooterComponent} from '../list-loading-footer';
 import {GamesServiceResponseModel} from '../../../../../services/games/model';
 
 interface Props {
-  games: GamesServiceResponseModel
+  games: GamesServiceResponseModel,
+  initialNumberRender: number,
+  increaseListGames: () => void
 }
 
-export class GamesListComponent extends Component<Props> {
+interface State {
+  isFooterRefreshing: boolean
+}
+
+export class GamesListComponent extends Component<Props, State> {
+
+  state =  {
+    isFooterRefreshing: false,
+  };
+
+  componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>, snapshot?: any): void {
+
+    //if(JSON.stringify(prevProps.games) !== JSON.stringify(this.props.games))
+      //this.setState({isFooterRefreshing: false});
+
+  }
+
+  increaseListGames = () => {
+
+    if(!this.state.isFooterRefreshing) {
+      this.setState({ isFooterRefreshing: true });
+      //this.props.increaseListGames();
+    }
+
+  };
 
   renderListEmptyComponent = (): JSX.Element => {
 
@@ -28,20 +52,21 @@ export class GamesListComponent extends Component<Props> {
 
   render = () => {
 
-    const { games } = this.props;
+    const { games, initialNumberRender } = this.props;
 
     return (
       <FlatList
         data={games.results}
-        keyExtractor={item => item.id.toString()}
+        initialNumToRender={initialNumberRender}
+        keyExtractor={(item, index) => index.toString()}
         renderItem={({item}) => <GamesCardComponent content={item} />}
         ListEmptyComponent={this.renderListEmptyComponent}
-        ListFooterComponent={<GameListLoadingFooterComponent/>}
-        onRefresh={() => {}}
-        refreshing={false}
+        ListFooterComponent={games.next ? <GameListLoadingFooterComponent/> : <></>}
+        onEndReached={games.next ? this.increaseListGames : () => {}}
+        onEndReachedThreshold={0.1}
       />
     )
 
-  }
+  };
 
 }

@@ -1,7 +1,4 @@
 import {GamesPageModel} from '../providers/games-page-model';
-import {
-  GameServiceRequestModel,
-} from '../../../../services/games/model';
 import {ServiceStatus} from '../../../../services/model';
 import {
   GamePageActionType, GamesPageAction, GamesPageActionConst,
@@ -15,15 +12,17 @@ export const GamesPageInitialState: GamesPageModel.Props = {
     publishers: null,
     genres: null,
     dates: null,
-    ordering: null
+    ordering: null,
+    page_size: 10,
   },
   status: ServiceStatus.noAction,
   functions: {
-    searchGames: (filters: GameServiceRequestModel) => GamesPageAction.searchGamesFetch(filters)
+    searchGames: (filters) => GamesPageAction.searchGamesFetch(filters),
+    increaseGameList: (games) => GamesPageAction.increaseGameListFetch(games),
   }
 };
 
-export const GamesPageReducer = (state = GamesPageInitialState, action: GamePageActionType) => {
+export const GamesPageReducer = (state = GamesPageInitialState, action: GamePageActionType): GamesPageModel.Props => {
 
   switch (action.type) {
 
@@ -39,6 +38,17 @@ export const GamesPageReducer = (state = GamesPageInitialState, action: GamePage
         ...state,
         status: action.payload.status,
         games: action.payload.games
+      }
+    }
+
+    case GamesPageActionConst.INCREASE_GAMES_FETCH_FINISHED: {
+      console.log([...state.games?.results!, ...action.payload.games?.results!]);
+      return {
+        ...state,
+        games: {
+          next: action.payload.games?.next!,
+          results: [...state.games?.results!, ...action.payload.games?.results!],
+        }
       }
     }
 
