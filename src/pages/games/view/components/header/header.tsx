@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import {GamesHeaderComponentStyle} from './header-styles';
 import {
@@ -29,13 +29,16 @@ export const GamesHeaderComponent = (screenProp: { navigation: NavigationScreenP
     return {};
 
   const {filters, functions} = screenProp.navigation.state.params!;
-  const changeText = (filters: GameServiceRequestModel) => functions?.changeSearchText(filters);
+  const startTyping = () => functions?.startTypingSearch();
+  const finishedTyping = (filters: GameServiceRequestModel) => functions?.finishedTypingSearch(filters);
 
   return ({
     headerTitle: <HeaderSearchBar
       navigation={screenProp.navigation}
       filters={filters!}
-      changeText={changeText} />,
+      startTyping={startTyping}
+      finishedTyping={finishedTyping}
+    />,
     headerRight: getHeaderRight(screenProp.navigation),
     headerTitleContainerStyle: {
       left: 10,

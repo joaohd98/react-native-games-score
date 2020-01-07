@@ -3,6 +3,7 @@ import {GamesCardComponentStyle} from './styles';
 import {GamesTrailerModalComponent} from '../trailer-modal';
 import {GameServiceResponseCardModel} from '../../../../../services/games/model';
 import {Helpers} from '../../../../../helpers';
+import {images} from '../../../../../assets';
 
 interface Props {
   content: GameServiceResponseCardModel,
@@ -44,7 +45,7 @@ export class GamesCardComponent extends Component<Props, State> {
       isModalVisible
     } = this.state;
 
-    const source = { uri: content.background_image };
+    const source = content.background_image ?  { uri: content.background_image } : images.imageNotFound;
 
     return (
       <>

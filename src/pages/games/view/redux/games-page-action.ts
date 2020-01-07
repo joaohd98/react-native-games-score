@@ -10,11 +10,12 @@ import {
 } from '../../../../services/model';
 
 export enum GamesPageActionConst {
-  GAMES_FETCH_REQUESTED = "GAMES_PAGE_FETCH_REQUESTED",
-  GAMES_FETCH_FINISHED = "GAMES_PAGE_FETCH_FINISHED",
-  GAMES_SEARCH_FETCH_REQUESTED = "GAMES_PAGE_SEARCH_FETCH_REQUESTED",
-  INCREASE_GAMES_FETCH_REQUESTED = "GAMES_PAGE_INCREASE_GAMES_REQUESTED",
-  INCREASE_GAMES_FETCH_FINISHED = "GAMES_PAGE_INCREASE_GAMES_FINISHED",
+  GAMES_FETCH_REQUESTED = "GAMES_FETCH_REQUESTED",
+  GAMES_FETCH_FINISHED = "GAMES_FETCH_FINISHED",
+  GAMES_SEARCH_START_TYPING = "GAMES_SEARCH_START_TYPING",
+  GAMES_SEARCH_FINISHED_TYPING_REQUEST = "GAMES_SEARCH_FINISHED_TYPING_REQUEST",
+  GAMES_INCREASE_FETCH_REQUESTED = "GAMES_INCREASE_FETCH_REQUESTED",
+  GAMES_INCREASE_FETCH_FINISHED = "GAMES_INCREASE_FETCH_FINISHED",
 }
 
 export interface GamePageActionType {
@@ -40,25 +41,31 @@ export class GamesPageAction {
     }
   });
 
-  static changeSearchText = (filters: GameServiceRequestModel) => ({
-    type: GamesPageActionConst.GAMES_SEARCH_FETCH_REQUESTED,
+  static startTypingSearch = () => ({
+    type: GamesPageActionConst.GAMES_SEARCH_START_TYPING,
+    payload: {
+      status: ServiceStatus.loading
+    }
+  });
+
+  static finishedTypingSearch = (filters: GameServiceRequestModel) => ({
+    type: GamesPageActionConst.GAMES_SEARCH_FINISHED_TYPING_REQUEST,
     payload: {
       filters: filters,
       games: [],
-      status: ServiceStatus.loading
     }
   });
 
 
   static increaseGameListFetch = (games: GamesServiceResponseModel) => ({
-    type: GamesPageActionConst.INCREASE_GAMES_FETCH_REQUESTED,
+    type: GamesPageActionConst.GAMES_INCREASE_FETCH_REQUESTED,
     payload: {
       games: games
     }
   });
 
   static increaseGameListFinished = (result: ServiceResponse<GamesServiceResponseModel>) => ({
-    type: GamesPageActionConst.INCREASE_GAMES_FETCH_FINISHED,
+    type: GamesPageActionConst.GAMES_INCREASE_FETCH_FINISHED,
     payload: {
       status: result.status,
       games: result.response,

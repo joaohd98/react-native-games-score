@@ -23,8 +23,8 @@ function *increaseGamesList(action: GamePageActionType) {
 
 export const gameListSaga = [
   takeEvery(GamesPageActionConst.GAMES_FETCH_REQUESTED, getGames),
-  takeLatest(GamesPageActionConst.GAMES_SEARCH_FETCH_REQUESTED, getGames),
-  takeEvery(GamesPageActionConst.INCREASE_GAMES_FETCH_REQUESTED, increaseGamesList),
+  takeLatest(GamesPageActionConst.GAMES_SEARCH_FINISHED_TYPING_REQUEST, getGames),
+  takeEvery(GamesPageActionConst.GAMES_INCREASE_FETCH_REQUESTED, increaseGamesList),
 ];
 
 

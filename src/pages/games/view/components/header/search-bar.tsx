@@ -9,28 +9,41 @@ import {GamesHeaderComponentStyle} from './header-styles';
 import {TouchableOpacity} from 'react-native';
 
 interface State {
-  text: string
+  text: string,
+  timeoutTyping: any,
 }
 
 interface Props {
   navigation: NavigationScreenProp<NavigationState, GamesPageModel.Props>,
   filters: GameServiceRequestModel,
-  changeText: (filters: GameServiceRequestModel) => void,
+  startTyping: () => void,
+  finishedTyping: (filters: GameServiceRequestModel) => void,
 }
 
 export class HeaderSearchBar extends Component<Props, State> {
 
   state = {
     text: this.props.filters.search,
+    timeoutTyping: 0,
   };
 
   changeText = (search: string) => {
 
-    console.log(search);
-    const {changeText, filters} = this.props;
-
     this.setState({ text: search });
-    changeText({...filters, search});
+
+    const {timeoutTyping} = this.state;
+    const {startTyping, finishedTyping, filters} = this.props;
+
+    startTyping();
+
+    if (timeoutTyping)
+      clearTimeout(timeoutTyping);
+
+    this.setState({
+      timeoutTyping: setTimeout(() => {
+        finishedTyping({...filters, search});
+      }, 500)
+    });
 
   };
 

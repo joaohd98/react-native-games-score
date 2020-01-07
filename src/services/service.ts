@@ -38,8 +38,6 @@ export class Service {
 
   private static makeRequest = async <Response>(url: string, method: "POST" | "GET", headers: HeadersInit_, body: BodyInit_): Promise<ServiceResponse<Response>> => {
 
-    console.log(url);
-
     try {
 
       let init: any = {

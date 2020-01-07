@@ -19,7 +19,8 @@ export namespace GamesPageModel {
     navigation?: NavigationScreenProp<Props>,
     functions?: {
       getGames: (filters: GameServiceRequestModel) => void,
-      changeSearchText: (filters: GameServiceRequestModel) => void,
+      startTypingSearch: () => void,
+      finishedTypingSearch: (filters: GameServiceRequestModel) => void,
       increaseGameList: (games: GamesServiceResponseModel) => void,
     }
   }
