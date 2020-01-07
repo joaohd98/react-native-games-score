@@ -5,7 +5,7 @@ import {
 import {GamesPageModel} from '../../providers/games-page-model';
 import {GameServiceRequestModel} from '../../../../../services/games/model';
 import React, {Component} from 'react';
-import {GamesHeaderComponentStyle} from './header-styles';
+import {GamesHeaderComponentStyle} from './search-bar-styles';
 import {TouchableOpacity} from 'react-native';
 
 interface State {

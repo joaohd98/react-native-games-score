@@ -1,6 +1,5 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
-import {GamesHeaderComponentStyle} from './header-styles';
 import {
   NavigationScreenProp, NavigationState,
 } from 'react-navigation';
@@ -8,16 +7,20 @@ import {GamesPageModel} from '../../providers/games-page-model';
 import {Routes} from '../../../../../router/routes';
 import {HeaderSearchBar} from './search-bar';
 import {GameServiceRequestModel} from '../../../../../services/games/model';
+import styled from 'styled-components/native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {Colors} from '../../../../../theme/colors';
 
 const getHeaderRight = (navigation: NavigationScreenProp<NavigationState, GamesPageModel.Props>) => {
 
-  const {
-    BarIcon,
-  } = GamesHeaderComponentStyle;
+  const FilterIcon = styled(Icon) `
+    font-size: 25px;
+    color: ${Colors.blue}
+  `;
 
   return (
     <TouchableOpacity onPress={() => navigation.navigate(Routes.gamesFilter)}>
-      <BarIcon name="filter"/>
+      <FilterIcon name="filter"/>
     </TouchableOpacity>
   );
 

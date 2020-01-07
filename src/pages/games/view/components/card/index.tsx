@@ -4,6 +4,7 @@ import {GamesTrailerModalComponent} from '../trailer-modal';
 import {GameServiceResponseCardModel} from '../../../../../services/games/model';
 import {Helpers} from '../../../../../helpers';
 import {images} from '../../../../../assets';
+import {GamesCardComponentConst} from './constants';
 
 interface Props {
   content: GameServiceResponseCardModel,
@@ -20,6 +21,8 @@ export class GamesCardComponent extends Component<Props, State> {
   };
 
   render = () => {
+    
+    const constants = GamesCardComponentConst;
 
     const {
       Card,
@@ -56,23 +59,23 @@ export class GamesCardComponent extends Component<Props, State> {
               <CardTitle>{ content.name }</CardTitle>
               <CardInformationContent>
                 <CardType>
-                  Platform(s): <CardInformation>{ Helpers.getTextSeparatedByComma(content.platforms, "TBA", "name" ,"platform")}</CardInformation>
+                  {constants.platforms}<CardInformation>{ Helpers.getTextSeparatedByComma(content.platforms, "TBA", "name" ,"platform")}</CardInformation>
                 </CardType>
                 <CardType>
-                  Genre(s): <CardInformation>{ Helpers.getTextSeparatedByComma(content.genres, "TBA", "name")}</CardInformation>
+                  {constants.genres}<CardInformation>{ Helpers.getTextSeparatedByComma(content.genres, "TBA", "name")}</CardInformation>
                 </CardType>
                 <CardType>
-                  Release: <CardInformation>{ content.released }</CardInformation>
+                  {constants.release}<CardInformation>{ content.released }</CardInformation>
                 </CardType>
               </CardInformationContent>
             </CardDescriptionContent>
             <CardScore>
-              <CardScoreText>{ content.metacritic || "TBA" }</CardScoreText>
+              <CardScoreText>{ content.metacritic || constants.metacriticNoScore }</CardScoreText>
             </CardScore>
           </CardContent>
           <CardFooterContent>
             <CardFooterButton onPress={() => this.setState({ isModalVisible: true })}>
-              <CardFooterText>Watch Trailer</CardFooterText>
+              <CardFooterText>{constants.watchTrailer}</CardFooterText>
             </CardFooterButton>
           </CardFooterContent>
         </Card>

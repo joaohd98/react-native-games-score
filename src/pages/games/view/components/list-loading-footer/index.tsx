@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import {GameListLoadingFooterComponentStyles} from './styles';
+import {GameListLoadingFooterComponentConst} from './constants';
 
 export class GameListLoadingFooterComponent extends Component {
 
   render = () => {
+
+    const constants = GameListLoadingFooterComponentConst;
 
     const {
       View,
@@ -14,7 +17,7 @@ export class GameListLoadingFooterComponent extends Component {
     return (
       <View>
         <ActivityIndicator size={"large"}/>
-        <Text>Carrgando</Text>
+        <Text>{ constants.loadingText }</Text>
       </View>
     )
 

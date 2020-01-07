@@ -15,6 +15,7 @@ import {
   WarningMessageComponentProps,
 } from '../../../components/warning-message';
 import {images} from '../../../assets';
+import {GamePageConstants} from './providers/games-page-constants';
 
 class Games extends Component<GamesPageModel.Props> {
 
@@ -35,13 +36,15 @@ class Games extends Component<GamesPageModel.Props> {
 
   getWarningMessage = (status: ServiceStatus): WarningMessageComponentProps => {
 
+    const constants = GamePageConstants;
+
     const {functions, filters} = this.props;
 
     return {
       image: images.gameOver,
-      title: "Warning",
-      message: status === ServiceStatus.exception ? "Something went wrong, try again later!" : "There is no internet connection, try again later!",
-      buttonText: "Try Again",
+      title: constants.warningTitle,
+      message: status === ServiceStatus.exception ? constants.warningStatusException : constants.warningStatusNoInternetConnection,
+      buttonText: constants.warningButton,
       onButtonPress: () => functions?.getGames(filters!)
     }
 

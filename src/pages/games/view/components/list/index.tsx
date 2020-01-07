@@ -5,6 +5,7 @@ import {WarningMessageComponent} from '../../../../../components/warning-message
 import {images} from '../../../../../assets';
 import {GameListLoadingFooterComponent} from '../list-loading-footer';
 import {GamesServiceResponseModel} from '../../../../../services/games/model';
+import {GamesListComponentConst} from './constants';
 
 interface Props {
   games: GamesServiceResponseModel,
@@ -40,10 +41,12 @@ export class GamesListComponent extends Component<Props, State> {
 
   renderListEmptyComponent = (): JSX.Element => {
 
+    const constants = GamesListComponentConst;
+
     return <WarningMessageComponent
       image={images.gameOver}
-      title={"No Games Found :("}
-      message={"Verify the list of filter and the search text"}
+      title={constants.emptyTitle}
+      message={constants.emptyMessage}
     />
 
   };

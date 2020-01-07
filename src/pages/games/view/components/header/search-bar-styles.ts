@@ -28,8 +28,5 @@ export const GamesHeaderComponentStyle = {
     font-size: 20px;
     top: -10px;
   `,
-  BarIcon: styled(Icon) `
-    font-size: 25px;
-    color: ${Colors.blue}
-  `
+
 };
