@@ -1,4 +1,4 @@
-import { put, takeEvery, call, all } from 'redux-saga/effects'
+import { put, takeEvery, call } from 'redux-saga/effects'
 import {
   GamePageActionType, GamesPageAction,
   GamesPageActionConst,
@@ -23,7 +23,7 @@ function *increaseGamesList(action: GamePageActionType) {
 
 export const gameListSaga = [
   takeEvery(GamesPageActionConst.GAMES_FETCH_REQUESTED, searchGames),
-  takeEvery(GamesPageActionConst.INCREASE_GAMES_FETCH_REQUESTED, increaseGamesList)
+  takeEvery(GamesPageActionConst.INCREASE_GAMES_FETCH_REQUESTED, increaseGamesList),
 ];
 
 

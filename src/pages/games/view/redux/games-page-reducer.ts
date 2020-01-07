@@ -41,8 +41,14 @@ export const GamesPageReducer = (state = GamesPageInitialState, action: GamePage
       }
     }
 
+    case GamesPageActionConst.INCREASE_GAMES_FETCH_REQUESTED: {
+      return {
+        ...state,
+      }
+    }
+
+
     case GamesPageActionConst.INCREASE_GAMES_FETCH_FINISHED: {
-      console.log([...state.games?.results!, ...action.payload.games?.results!]);
       return {
         ...state,
         games: {

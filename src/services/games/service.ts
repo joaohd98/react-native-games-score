@@ -18,8 +18,6 @@ export class GameService extends Service {
 
   static increaseGames = (request: GamesServiceResponseModel): Promise<ServiceResponse<GamesServiceResponseModel>> => {
 
-    console.log(request.next);
-
     return GameService.makeGetRequest<GamesServiceResponseModel>(request.next, null);
 
   };

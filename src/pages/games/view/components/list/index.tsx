@@ -24,8 +24,8 @@ export class GamesListComponent extends Component<Props, State> {
 
   componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>, snapshot?: any): void {
 
-    //if(JSON.stringify(prevProps.games) !== JSON.stringify(this.props.games))
-      //this.setState({isFooterRefreshing: false});
+    if(this.state.isFooterRefreshing && prevProps.games.results.length < this.props.games.results.length)
+      this.setState({ isFooterRefreshing: false });
 
   }
 
@@ -33,7 +33,7 @@ export class GamesListComponent extends Component<Props, State> {
 
     if(!this.state.isFooterRefreshing) {
       this.setState({ isFooterRefreshing: true });
-      //this.props.increaseListGames();
+      this.props.increaseListGames();
     }
 
   };
@@ -44,8 +44,6 @@ export class GamesListComponent extends Component<Props, State> {
       image={images.gameOver}
       title={"No Games Found :("}
       message={"Verify the list of filter and the search text"}
-      buttonText={"Try Again"}
-      onButtonPress={() => {}}
     />
 
   };
