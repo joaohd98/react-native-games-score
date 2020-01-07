@@ -1,23 +1,32 @@
-import Config from 'react-native-config';
 import {ServiceResponse, ServiceStatus} from './model';
 
 export class Service {
 
   static makeGetRequest  = async <Response, Request = null>(url: string, parameters: Request, header: HeadersInit_ = {}): Promise<ServiceResponse<Response>> => {
 
-    let urlGet = url;
-
     if(parameters) {
 
-      urlGet = `${url}?`;
+      let firstTry = true;
 
-      for(let index in parameters)
-        if(parameters[index])
-          urlGet += `${index}=${parameters[index]}`;
+      for(let index in parameters) {
+
+        if (parameters[index]) {
+
+          if(firstTry) {
+            url += `?${index}=${parameters[index]}`;
+            firstTry = false
+          }
+
+          else
+            url += `&${index}=${parameters[index]}`;
+
+        }
+
+      }
 
     }
 
-    return Service.makeRequest(urlGet, "GET", header, parameters)
+    return Service.makeRequest(url, "GET", header, parameters)
 
   };
 
@@ -29,6 +38,7 @@ export class Service {
 
   private static makeRequest = async <Response>(url: string, method: "POST" | "GET", headers: HeadersInit_, body: BodyInit_): Promise<ServiceResponse<Response>> => {
 
+    console.log(url);
 
     try {
 

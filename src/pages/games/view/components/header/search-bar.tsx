@@ -26,9 +26,10 @@ export class HeaderSearchBar extends Component<Props, State> {
 
   changeText = (search: string) => {
 
+    console.log(search);
     const {changeText, filters} = this.props;
 
-    this.setState({text: search});
+    this.setState({ text: search });
     changeText({...filters, search});
 
   };

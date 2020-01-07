@@ -44,7 +44,8 @@ export class GamesPageAction {
     type: GamesPageActionConst.GAMES_SEARCH_FETCH_REQUESTED,
     payload: {
       filters: filters,
-      games: []
+      games: [],
+      status: ServiceStatus.loading
     }
   });
 

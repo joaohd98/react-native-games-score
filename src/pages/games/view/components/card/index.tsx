@@ -55,10 +55,10 @@ export class GamesCardComponent extends Component<Props, State> {
               <CardTitle>{ content.name }</CardTitle>
               <CardInformationContent>
                 <CardType>
-                  Platform(s): <CardInformation>{ Helpers.getTextSeparatedByComma(content.platforms, "name", "platform")}</CardInformation>
+                  Platform(s): <CardInformation>{ Helpers.getTextSeparatedByComma(content.platforms, "TBA", "name" ,"platform")}</CardInformation>
                 </CardType>
                 <CardType>
-                  Genre(s): <CardInformation>{ Helpers.getTextSeparatedByComma(content.genres, "name")}</CardInformation>
+                  Genre(s): <CardInformation>{ Helpers.getTextSeparatedByComma(content.genres, "TBA", "name")}</CardInformation>
                 </CardType>
                 <CardType>
                   Release: <CardInformation>{ content.released }</CardInformation>
