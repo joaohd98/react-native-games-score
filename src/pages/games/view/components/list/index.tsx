@@ -24,7 +24,7 @@ export class GamesListComponent extends Component<Props, State> {
 
   componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>, snapshot?: any): void {
 
-    if(this.state.isFooterRefreshing && prevProps.games.results.length < this.props.games.results.length)
+    if(this.state.isFooterRefreshing && prevProps.games.results.length != this.props.games.results.length)
       this.setState({ isFooterRefreshing: false });
 
   }
@@ -51,16 +51,17 @@ export class GamesListComponent extends Component<Props, State> {
   render = () => {
 
     const { games, initialNumberRender } = this.props;
+    const hasFooterLoading = games.next && games.results.length > 0;
 
     return (
       <FlatList
         data={games.results}
         initialNumToRender={initialNumberRender}
-        keyExtractor={(item, index) => index.toString()}
+        keyExtractor={item => item.id.toString()}
         renderItem={({item}) => <GamesCardComponent content={item} />}
         ListEmptyComponent={this.renderListEmptyComponent}
-        ListFooterComponent={games.next ? <GameListLoadingFooterComponent/> : <></>}
-        onEndReached={games.next ? this.increaseListGames : () => {}}
+        ListFooterComponent={hasFooterLoading ? <GameListLoadingFooterComponent/> : <></>}
+        onEndReached={hasFooterLoading ? this.increaseListGames : () => {}}
         onEndReachedThreshold={0.1}
       />
     )

@@ -5,11 +5,11 @@ import {
 } from './games-page-action';
 import {GameService} from '../../../../services/games/service';
 
-function *searchGames(action: GamePageActionType) {
+function *getGames(action: GamePageActionType) {
 
   const result = yield call(() => GameService.getGames(action.payload.filters!));
 
-  yield put(GamesPageAction.searchGamesFinished(result));
+  yield put(GamesPageAction.getGamesFinished(result));
 
 }
 
@@ -22,7 +22,8 @@ function *increaseGamesList(action: GamePageActionType) {
 }
 
 export const gameListSaga = [
-  takeEvery(GamesPageActionConst.GAMES_FETCH_REQUESTED, searchGames),
+  takeEvery(GamesPageActionConst.GAMES_FETCH_REQUESTED, getGames),
+  takeEvery(GamesPageActionConst.GAMES_SEARCH_FETCH_REQUESTED, getGames),
   takeEvery(GamesPageActionConst.INCREASE_GAMES_FETCH_REQUESTED, increaseGamesList),
 ];
 

@@ -17,7 +17,8 @@ export const GamesPageInitialState: GamesPageModel.Props = {
   },
   status: ServiceStatus.noAction,
   functions: {
-    searchGames: (filters) => GamesPageAction.searchGamesFetch(filters),
+    getGames: (filters) => GamesPageAction.getGamesFetch(filters),
+    changeSearchText: (filters) => GamesPageAction.changeSearchText(filters),
     increaseGameList: (games) => GamesPageAction.increaseGameListFetch(games),
   }
 };
@@ -29,7 +30,7 @@ export const GamesPageReducer = (state = GamesPageInitialState, action: GamePage
     case GamesPageActionConst.GAMES_FETCH_REQUESTED: {
       return {
         ...state,
-        status: ServiceStatus.loading,
+        status: action.payload.status,
       }
     }
 
@@ -41,12 +42,15 @@ export const GamesPageReducer = (state = GamesPageInitialState, action: GamePage
       }
     }
 
-    case GamesPageActionConst.INCREASE_GAMES_FETCH_REQUESTED: {
+    case GamesPageActionConst.GAMES_SEARCH_FETCH_REQUESTED: {
+      console.log(action.payload);
       return {
         ...state,
+        status: action.payload.status,
+        filters: action.payload.filters,
+        games: action.payload.games
       }
     }
-
 
     case GamesPageActionConst.INCREASE_GAMES_FETCH_FINISHED: {
       return {

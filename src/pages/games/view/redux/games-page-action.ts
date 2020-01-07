@@ -12,6 +12,7 @@ import {
 export enum GamesPageActionConst {
   GAMES_FETCH_REQUESTED = "GAMES_PAGE_FETCH_REQUESTED",
   GAMES_FETCH_FINISHED = "GAMES_PAGE_FETCH_FINISHED",
+  GAMES_SEARCH_FETCH_REQUESTED = "GAMES_PAGE_SEARCH_FETCH_REQUESTED",
   INCREASE_GAMES_FETCH_REQUESTED = "GAMES_PAGE_INCREASE_GAMES_REQUESTED",
   INCREASE_GAMES_FETCH_FINISHED = "GAMES_PAGE_INCREASE_GAMES_FINISHED",
 }
@@ -23,7 +24,7 @@ export interface GamePageActionType {
 
 export class GamesPageAction {
 
-  static searchGamesFetch = (filters: GameServiceRequestModel) => ({
+  static getGamesFetch = (filters: GameServiceRequestModel) => ({
     type: GamesPageActionConst.GAMES_FETCH_REQUESTED,
     payload: {
       status: ServiceStatus.loading,
@@ -31,13 +32,22 @@ export class GamesPageAction {
     }
   });
 
-  static searchGamesFinished = (result: ServiceResponse<GamesServiceResponseModel>) => ({
+  static getGamesFinished = (result: ServiceResponse<GamesServiceResponseModel>) => ({
     type: GamesPageActionConst.GAMES_FETCH_FINISHED,
     payload: {
       status: result.status,
       games: result.response
     }
   });
+
+  static changeSearchText = (filters: GameServiceRequestModel) => ({
+    type: GamesPageActionConst.GAMES_SEARCH_FETCH_REQUESTED,
+    payload: {
+      filters: filters,
+      games: []
+    }
+  });
+
 
   static increaseGameListFetch = (games: GamesServiceResponseModel) => ({
     type: GamesPageActionConst.INCREASE_GAMES_FETCH_REQUESTED,

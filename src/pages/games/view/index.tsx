@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {GamesListComponent} from './components/list';
-import {GamesHeaderComponent} from './components/header';
+import {GamesHeaderComponent} from './components/header/header';
 import {Container} from '../../../theme/components';
 import {GamesPageModel} from './providers/games-page-model';
 import {connect} from 'react-redux';
@@ -22,9 +22,14 @@ class Games extends Component<GamesPageModel.Props> {
 
   componentDidMount = () => {
 
-    const {functions, filters} = this.props;
+    const {functions, filters, navigation} = this.props;
 
-    functions?.searchGames(filters!);
+    functions?.getGames(filters!);
+
+    navigation?.setParams({
+     filters,
+     functions
+    });
 
   };
 
@@ -37,7 +42,7 @@ class Games extends Component<GamesPageModel.Props> {
       title: "Warning",
       message: status === ServiceStatus.exception ? "Something went wrong, try again later!" : "There is no internet connection, try again later!",
       buttonText: "Try Again",
-      onButtonPress: () => functions?.searchGames(filters!)
+      onButtonPress: () => functions?.getGames(filters!)
     }
 
   };

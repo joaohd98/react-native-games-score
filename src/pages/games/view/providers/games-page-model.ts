@@ -4,6 +4,11 @@ import {
 } from '../../../../services/games/model';
 import {ServiceStatus} from '../../../../services/model';
 import {GamesPageAction} from '../redux/games-page-action';
+import {
+  NavigationParams,
+  NavigationScreenProp,
+  NavigationState,
+} from 'react-navigation';
 
 export namespace GamesPageModel {
 
@@ -11,8 +16,10 @@ export namespace GamesPageModel {
     games?: GamesServiceResponseModel | null ,
     filters?: GameServiceRequestModel
     status?: ServiceStatus,
+    navigation?: NavigationScreenProp<Props>,
     functions?: {
-      searchGames: (filters: GameServiceRequestModel) => void,
+      getGames: (filters: GameServiceRequestModel) => void,
+      changeSearchText: (filters: GameServiceRequestModel) => void,
       increaseGameList: (games: GamesServiceResponseModel) => void,
     }
   }
