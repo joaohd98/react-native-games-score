@@ -87,7 +87,7 @@ export class GamesCardComponent extends Component<Props, State> {
                   {constants.genres}<CardInformation>{ Helpers.getTextSeparatedByComma(content.genres, "TBA", "name")}</CardInformation>
                 </CardType>
                 <CardType>
-                  {constants.release}<CardInformation>{ content.released }</CardInformation>
+                  {constants.release}<CardInformation>{ Helpers.formatDate(content.released, "DD/MM/YYYY") }</CardInformation>
                 </CardType>
               </CardInformationContent>
             </CardDescriptionContent>

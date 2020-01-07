@@ -1,5 +1,6 @@
 import Icon from 'react-native-vector-icons/FontAwesome';
 import React from 'react';
+import Moment from 'moment';
 
 export class Helpers {
 
@@ -49,4 +50,14 @@ export class Helpers {
 
   }
 
+  static formatDate = (data: string, format: string) => {
+
+    try {
+      return Moment(data).format(format);
+    } catch {
+      return data;
+    }
+
+
+  }
 }
