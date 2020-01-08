@@ -69,7 +69,8 @@ export const GamesCardComponentStyle = {
   CardScoreText: styled.Text`
     color: ${Colors.white};
     margin: auto;
-    align-items: center
+    font-size: 14px;
+    align-items: center;
     font-weight: bold;
   `
 };

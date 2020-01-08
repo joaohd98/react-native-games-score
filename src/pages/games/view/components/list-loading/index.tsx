@@ -10,7 +10,7 @@ interface State {
 export class GamesListLoadingComponent extends Component<any, State> {
 
   state = {
-    skeletonAnimation: new Animated.Value(0)
+    skeletonAnimation: new Animated.Value(1)
   };
 
   componentDidMount = () => {
@@ -40,7 +40,7 @@ export class GamesListLoadingComponent extends Component<any, State> {
 
     const styles = {
       backgroundColor: this.state.skeletonAnimation.interpolate({
-        inputRange: [0, 50, 100, 150, 200, 250, 300],
+        inputRange: [1, 50, 100, 150, 200, 250, 300],
         outputRange: Colors.skeleton,
       })
     };

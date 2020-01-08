@@ -13,7 +13,7 @@ interface State {
 export class ProgressiveImageComponent extends Component<ImageProps, State> {
 
   state = {
-    skeletonAnimation: new Animated.Value(0),
+    skeletonAnimation: new Animated.Value(1),
     opacityAnimation: new Animated.Value(1),
   };
 
@@ -30,11 +30,16 @@ export class ProgressiveImageComponent extends Component<ImageProps, State> {
 
   onLoadEnd = () => {
 
-    this.state.opacityAnimation.setValue(0.1);
+    this.state.opacityAnimation.setValue(0.5);
 
     Animated.timing(this.state.opacityAnimation, {
       toValue: 1,
     }).start();
+
+    Animated.timing(this.state.skeletonAnimation, {
+      toValue: 300,
+      duration: 3000
+    }).stop();
 
   };
 
@@ -43,26 +48,18 @@ export class ProgressiveImageComponent extends Component<ImageProps, State> {
     const { Image } = ProgressiveImageComponentStyles;
     const { style } = this.props;
 
-    const {
-      skeletonAnimation,
-      opacityAnimation,
-    } = this.state;
-
-    const background = {
-      backgroundColor: skeletonAnimation.interpolate({
-        inputRange: [0, 50, 100, 150, 200, 250, 300],
+    const animation = {
+      backgroundColor: this.state.skeletonAnimation.interpolate({
+        inputRange: [1, 50, 100, 150, 200, 250, 300],
         outputRange: Colors.skeleton,
       }),
-    };
-
-    const opacity = {
-      opacity: opacityAnimation
+      opacity: this.state.opacityAnimation
     };
 
     return <Image
       {...this.props}
       onLoad={this.onLoadEnd}
-      style={[style, { ...background }, { ...opacity }]}
+      style={[style, { ...animation }]}
     />;
 
   }
