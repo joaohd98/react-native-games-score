@@ -115,7 +115,7 @@ export class GamesCardComponent extends Component<Props, State> {
           </CardContent>
           { this.getCardFooter(content) }
         </Card>
-        <GamesTrailerModalComponent visible={isModalVisible} video={content.clip.clip} closeModal={() => this.setState({ isModalVisible: false })} />
+        <GamesTrailerModalComponent visible={isModalVisible} video={content.clip ? content.clip.clip : ""} closeModal={() => this.setState({ isModalVisible: false })} />
       </>
     )
 

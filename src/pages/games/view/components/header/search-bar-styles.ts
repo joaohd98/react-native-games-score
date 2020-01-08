@@ -16,10 +16,8 @@ export const GamesHeaderComponentStyle = {
     color: ${Colors.black};
   `,
   SearchIcon: styled(Icon) `
-    position: absolute;
-    left: 10px;
+    left: 20px;
     font-size: 20px;
-    top: ${Platform.OS === 'ios' ? 10 : 0};
     z-index: 5;
     color: ${Colors.gray};
   `,
