@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Colors} from '../../../../../theme/colors';
 import {normalizeFontSize} from '../../../../../theme/font-size';
+import {Platform} from 'react-native';
 
 export const GamesHeaderComponentStyle = {
   Input: styled.TextInput`
@@ -18,7 +19,7 @@ export const GamesHeaderComponentStyle = {
     position: absolute;
     left: 10px;
     font-size: 20px;
-    top: 10px;
+    top: ${Platform.OS === 'ios' ? 10 : 0};
     z-index: 5;
     color: ${Colors.gray};
   `,
