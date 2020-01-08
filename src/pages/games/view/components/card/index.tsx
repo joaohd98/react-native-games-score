@@ -21,6 +21,27 @@ export class GamesCardComponent extends Component<Props, State> {
     isModalVisible: false
   };
 
+  getCardFooter(content: GameServiceResponseCardModel) {
+
+    const constants = GamesCardComponentConst;
+
+    const {
+      CardFooterContent,
+      CardFooterButton,
+      CardFooterText
+    } = GamesCardComponentStyle;
+
+    return (
+      content.clip ?
+        <CardFooterContent>
+          <CardFooterButton onPress={() => this.setState({ isModalVisible: true })}>
+            <CardFooterText>{constants.watchTrailer}</CardFooterText>
+          </CardFooterButton>
+        </CardFooterContent>
+      : <></>
+    );
+
+  }
 
   getScoreColor = (score: number | null) => {
 
@@ -57,9 +78,6 @@ export class GamesCardComponent extends Component<Props, State> {
       CardInformation,
       CardScore,
       CardScoreText,
-      CardFooterContent,
-      CardFooterButton,
-      CardFooterText
     } = GamesCardComponentStyle;
 
     const {
@@ -95,13 +113,9 @@ export class GamesCardComponent extends Component<Props, State> {
               <CardScoreText>{ content.metacritic || constants.metacriticNoScore }</CardScoreText>
             </CardScore>
           </CardContent>
-          <CardFooterContent>
-            <CardFooterButton onPress={() => this.setState({ isModalVisible: true })}>
-              <CardFooterText>{constants.watchTrailer}</CardFooterText>
-            </CardFooterButton>
-          </CardFooterContent>
+          { this.getCardFooter(content) }
         </Card>
-        <GamesTrailerModalComponent visible={isModalVisible} closeModal={() => this.setState({ isModalVisible: false })} />
+        <GamesTrailerModalComponent visible={isModalVisible} video={content.clip.clip} closeModal={() => this.setState({ isModalVisible: false })} />
       </>
     )
 

@@ -9,13 +9,14 @@ import {GamesPageInitialState} from './redux/games-page-reducer';
 import {StatesReducers} from '../../../redux/reducers';
 import {ServiceStatus} from '../../../services/model';
 import {GamesListLoadingComponent} from './components/list-loading';
-import {View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {
   WarningMessageComponent,
   WarningMessageComponentProps,
 } from '../../../components/warning-message';
 import {images} from '../../../assets';
 import {GamePageConstants} from './providers/games-page-constants';
+import Video from 'react-native-video';
 
 class Games extends Component<GamesPageModel.Props> {
 

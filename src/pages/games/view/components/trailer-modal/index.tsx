@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
-import {
-  Text,
-} from 'react-native';
 import {GamesTrailerModalComponentStyles} from './styles';
-import {ModalTransparentComponent} from '../../../../../components/modal-transparent';
+import Video from 'react-native-video';
 
 interface Props {
+  video: string,
   visible: boolean,
   closeModal: () => void
 }
@@ -16,13 +14,16 @@ export class GamesTrailerModalComponent extends Component<Props> {
 
     const {
       visible,
-      closeModal
+      closeModal,
+      video
     } = this.props;
 
     const {
       Modal,
       CloseIconContainer,
       CloseIcon,
+      VideoContainer,
+      Video,
     } = GamesTrailerModalComponentStyles;
 
     return (
@@ -30,11 +31,9 @@ export class GamesTrailerModalComponent extends Component<Props> {
         <CloseIconContainer onPress={closeModal}>
           <CloseIcon name={"close"} />
         </CloseIconContainer>
-        <Text>AAAAA</Text>
-        <Text>AAAAA</Text>
-        <Text>AAAAA</Text>
-        <Text>AAAAA</Text>
-        <Text>AAAAA</Text>
+        <VideoContainer>
+          <Video source={{uri: video}} resizeMode={"stretch"} controls={true}/>
+        </VideoContainer>
       </Modal>
     );
 
