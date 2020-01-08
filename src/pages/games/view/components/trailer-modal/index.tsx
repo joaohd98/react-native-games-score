@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {GamesTrailerModalComponentStyles} from './styles';
-import Video from 'react-native-video';
 
 interface Props {
   video: string,
