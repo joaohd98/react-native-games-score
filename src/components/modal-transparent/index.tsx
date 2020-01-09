@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {
-  Modal, TouchableOpacity, TouchableOpacityProps,
+  Modal,
+  TouchableOpacity,
+  TouchableOpacityProps,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import {ModalTransparentComponentStyles} from './styles';
 
@@ -15,7 +18,8 @@ export class ModalTransparentComponent extends Component<Props> {
   render = () => {
 
     const {
-      ModalContainer
+      ModalOuter,
+      ModalContent,
     } = ModalTransparentComponentStyles;
 
     const {
@@ -26,11 +30,15 @@ export class ModalTransparentComponent extends Component<Props> {
 
     return (
       <Modal visible={visible} animationType={"fade"} transparent={true}>
-        <ModalContainer activeOpacity={1} onPress={close}>
-          <TouchableOpacity style={style} activeOpacity={1} onPress={e => e.stopPropagation()}>
-            { this.props.children }
-          </TouchableOpacity>
-        </ModalContainer>
+        <TouchableWithoutFeedback onPress={close}>
+          <ModalOuter>
+            <TouchableWithoutFeedback onPress={e => e.stopPropagation()}>
+              <ModalContent style={style}>
+                { this.props.children }
+              </ModalContent>
+            </TouchableWithoutFeedback>
+          </ModalOuter>
+        </TouchableWithoutFeedback>
       </Modal>
     )
   };

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {FilterGamesPageStyles} from './styles';
 import {FilterGamesOrderingComponent} from './components/ordering';
 import {FilterGamesGenresComponent} from './components/genres';
+import {FilterGamesPlatformsComponent} from './components/platforms';
 
 export class FilterGamesPage extends Component {
 
@@ -20,6 +21,9 @@ export class FilterGamesPage extends Component {
         </Item>
         <Item>
           <FilterGamesGenresComponent/>
+        </Item>
+        <Item>
+          <FilterGamesPlatformsComponent/>
         </Item>
       </Container>
     )
